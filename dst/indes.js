@@ -14,13 +14,7 @@ const fs = require("fs");
 //   // Write the CSV content to a file
 //   fs.writeFileSync("data.csv", csvContent, "utf-8");
 // }
-function writeToCSV(data, filePath) {
-    const csvContent = data.map(row => row.join(",")).join("\n");
-    fs.writeFileSync(filePath, csvContent, "utf-8");
-    console.log("Data successfully written to CSV file.");
-}
-let pathh = "a.csv";
-let v;
+// let v:string[][];
 let t2 = async (URL) => {
     try {
         let li = [];
@@ -36,8 +30,8 @@ let t2 = async (URL) => {
         if (names2.length > 0) {
             for (let i2 = 0; i2 < names2.length; i2++) {
                 name2 = await page.evaluate(el => el.innerText, names2[i2]);
-                // console.log(name2)
-                console.log(typeof (name2));
+                console.log(name2);
+                // console.log(typeof(name2));
                 // li.push(name2);
             }
         }
@@ -46,8 +40,8 @@ let t2 = async (URL) => {
         if (names3.length > 0) {
             for (let i2 = 0; i2 < names3.length; i2++) {
                 name3 = await page.evaluate(el => el.innerText, names3[i2]);
-                // console.log(name3)
-                li.push(name3);
+                console.log(name3);
+                // li.push(name3);
             }
         }
         let name4 = "";
@@ -55,17 +49,11 @@ let t2 = async (URL) => {
         if (names4.length > 0) {
             for (let i2 = 0; i2 < names4.length; i2++) {
                 name4 = await page.evaluate(el => el.innerText, names4[i2]);
-                // console.log(name4)
-                li.push(name4);
+                console.log(name4);
+                // li.push(name4);
             }
         }
-        let tt = [li];
-        // tt.push(li);
-        writeToCSV(tt, pathh);
-        // li.push(name2)
-        // li.push(name3)
-        // li.push(name4)
-        // console.log(li)
+        // let tt=[li];
         console.log("YES");
         // v.push(li);
         // console.log(name2+name3+name4);
@@ -124,15 +112,13 @@ let main_actual = async () => {
                     link += name[ii];
                 }
                 // console.log(link);
-                if (i == 0) {
-                    let link2 = "https://www.countyoffice.org/" + link + "/";
-                    await t1(link2);
-                }
+                // if(i==0){
+                let link2 = "https://www.countyoffice.org/" + link + "/";
+                await t1(link2);
+                // }
             }
         }
-        // console.table(v);
         console.log("Error");
-        // await sleep_for(page,1000,2000);
     }
     catch (e) {
         console.log(e);
@@ -140,7 +126,5 @@ let main_actual = async () => {
 };
 let main = async () => {
     await main_actual();
-    // await convertToCSV(v);
-    // await t1("https://www.countyoffice.org/16th-st-garland-tx-property-records/")
 };
-main(); //bootstrap
+main();

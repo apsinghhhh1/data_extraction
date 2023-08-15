@@ -1,2 +1,3 @@
 #!/bin/zsh
-tsc && (node ./dst/indes.js)
+# tsc && (node ./dst/index.js)
+tsc && (node ./dst/index.js)
